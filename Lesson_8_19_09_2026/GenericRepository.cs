@@ -5,29 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    private readonly AppDbContext _context;
+    private readonly AppDbContext conn;
     public GenericRepository(AppDbContext context)
     {
-        _context = context;
+        conn = context;
     }
     public List<T> GetAll()
     {
-        return _context.Set<T>().ToList();
+        return conn.Set<T>().ToList();
     }
     public T GetById(int id)
     {
-        return _context.Set<T>().Find(id);
+        return conn.Set<T>().Find(id);
     }
     public void Add(T entity)
     {
-        _context.Set<T>().Add(entity);
+        conn.Set<T>().Add(entity);
     }
     public void Update(T entity)
     {
-        _context.Set<T>().Update(entity);
+        conn.Set<T>().Update(entity);
     }
     public void Delete(T entity)
     {
-        _context.Set<T>().Remove(entity);
+        conn.Set<T>().Remove(entity);
     }
 }

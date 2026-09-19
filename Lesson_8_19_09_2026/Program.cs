@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 var context = new AppDbContext();
-
 var result = from student in context.Students
              join group1 in context.Groups
              on student.GroupId equals group1.Id
@@ -13,10 +12,7 @@ var result = from student in context.Students
                  GroupName = group1.Name,
                  TeacherName = teacher.Name
              };
-
 foreach (var item in result)
 {
-    Console.WriteLine(
-        $"{item.StudentName} - {item.GroupName} - {item.TeacherName}"
-    );
+    Console.WriteLine( $"{item.StudentName} - {item.GroupName} - {item.TeacherName}" );
 }
